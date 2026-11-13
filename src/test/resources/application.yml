@@ -1,0 +1,19 @@
+# Tests use an in-memory H2 database in SQL Server mode, so they run without SQL Server.
+spring:
+  datasource:
+    url: jdbc:h2:mem:library;MODE=MSSQLServer;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+jwt:
+  secret: test-secret-test-secret-test-secret-1234
+  access-token-minutes: 15
+  refresh-token-days: 7
+
+app:
+  seed:
+    enabled: false

@@ -1,0 +1,30 @@
+# No secrets in this file. Set DB_PASSWORD and JWT_SECRET as environment variables
+# (IntelliJ: Run > Edit Configurations > Environment variables).
+spring:
+  application:
+    name: library-sdd
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=LibraryManagement;encrypt=true;trustServerCertificate=true
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        use_nationalized_character_data: true
+
+server:
+  port: 8080
+
+# T3 demo data (staff/staff123, reader1/reader123). Set to false to start empty.
+app:
+  seed:
+    enabled: true
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-minutes: 15
+  refresh-token-days: 7
